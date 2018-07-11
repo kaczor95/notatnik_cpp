@@ -119,7 +119,7 @@ void __fastcall TForm1::Zakocz1Click(TObject *Sender)
 
 void __fastcall TForm1::FormClose(TObject *Sender, TCloseAction &Action)
 {
-if(Application -> MessageBox("Czy na pewno zakoñczyæ program?"," PotwierdŸ",MB_YESNO | MB_ICONQUESTION) == IDNO)
+        if(Application -> MessageBox("Czy na pewno zakoñczyæ program?"," PotwierdŸ",MB_YESNO | MB_ICONQUESTION) == IDNO)
         {
             Action = caNone;
         }
