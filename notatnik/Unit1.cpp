@@ -11,6 +11,7 @@
 #pragma resource "*.dfm"
 TForm1 *Form1;
 
+// string na potrzeby nazwy pilku
 AnsiString nazwaPliku = "";
 
 //---------------------------------------------------------------------------
@@ -22,10 +23,13 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 
 void __fastcall TForm1::Otwrz1Click(TObject *Sender)
 {
+        // otwarcie nowego dokumentu tekstowego
         if(OpenDialog1->Execute())
         {
+                // metoda try catch pozwalaj¹ca na obs³ugê wyj¹tków
                 try
                 {
+                        //wczytanie linijek tekstu na pole Memo
                         Tresc->Lines->LoadFromFile(OpenDialog1->FileName);
                         nazwaPliku = OpenDialog1->FileName;
                 }
@@ -41,6 +45,7 @@ void __fastcall TForm1::Otwrz1Click(TObject *Sender)
 
 void __fastcall TForm1::Zapiszjako1Click(TObject *Sender)
 {
+        // zapisywanie pliku tekstowego
         if(SaveDialog1->Execute())
         {
                 try
@@ -58,6 +63,7 @@ void __fastcall TForm1::Zapiszjako1Click(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::Zapisz1Click(TObject *Sender)
 {
+        // zapis pliku
         if(nazwaPliku != "")
         {
                 Tresc -> Lines -> SaveToFile(nazwaPliku);
@@ -70,6 +76,7 @@ void __fastcall TForm1::Zapisz1Click(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TForm1::Nowy1Click(TObject *Sender)
 {
+        // utworzenie nowego pliku
         if(Application -> MessageBox("Czy na pewno utworzyæ nowy pilk?"," PotwierdŸ",MB_YESNOCANCEL | MB_ICONQUESTION) == IDYES)
         {
                 Tresc ->Lines -> Clear();
@@ -83,10 +90,13 @@ void __fastcall TForm1::TrescKeyDown(TObject *Sender, WORD &Key, TShiftState Shi
 
      if(Shift.Contains(ssCtrl))
      {
+        // Kombinacja klawiszy crtl + s
          if((Key == 'S' ) || (Key == 's'))
          {
                 Form1 -> Zapisz1Click(MainMenu1);
          }
+
+         // Kombinacja klawiszy crtl + A
          if((Key == 'A' ) || (Key == 'a'))
          {
                 Tresc -> SelectAll();
@@ -180,6 +190,7 @@ void __fastcall TForm1::Oprogramie1Click(TObject *Sender)
 
 void __fastcall TForm1::Stronainternetowa1Click(TObject *Sender)
 {
+        ///yuiyuiyu
         ShellExecute(NULL, "open", "www.google.pl", NULL, NULL, SW_SHOWNORMAL);
 }
 //---------------------------------------------------------------------------

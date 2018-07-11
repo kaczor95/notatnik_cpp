@@ -78,8 +78,7 @@ void __fastcall TForm1::Nowy1Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::TrescKeyDown(TObject *Sender, WORD &Key,
-      TShiftState Shift)
+void __fastcall TForm1::TrescKeyDown(TObject *Sender, WORD &Key, TShiftState Shift)
 {
 
      if(Shift.Contains(ssCtrl))
@@ -88,6 +87,12 @@ void __fastcall TForm1::TrescKeyDown(TObject *Sender, WORD &Key,
          {
                 Form1 -> Zapisz1Click(MainMenu1);
          }
+         if((Key == 'A' ) || (Key == 'a'))
+         {
+                Tresc -> SelectAll();
+
+         }
+
      }
 }
 //---------------------------------------------------------------------------
